@@ -26,9 +26,25 @@ export AWS_SECRET_ACCESS_KEY=<your access key>
 
 ### Usage
 
-Export your AWS keys:
+The domiq/erlang-server-build docker image has a ./build.xml which will build erlang-server image.
+
+To see available options you can run the docker image with no arguments:
 
 ```shell
-docker run -it --rm -v $(pwd):/out -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY domiq/erlang-server-build /bin/bash -ci "./build.sh -t=master -s"
+$ docker run -it --rm -v $(pwd):/out -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY domiq/erlang-server-build
+
+Usage: /bin/bash -ci './build.sh [-s|--save] [-r=<region>|--region=<region>] [-t=<tag>|--tag=<tag>]'
+```
+
+build.sh arguments:
+  * -s|--save   - save the generated erlang server image to AWS S3
+  * -r|--region - specify the region of S3 bucket (defaults to eu-west-1)
+  * -t|--tag    - specify commid_id or TAG in the repository that you want to build
+  * -h|--help   - display usage
+
+
+
+```shell
+$ docker run -it --rm -v $(pwd):/out -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY domiq/erlang-server-build /bin/bash -ci "./build.sh -t=master -s"
 ```
 
