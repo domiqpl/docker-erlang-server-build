@@ -29,6 +29,6 @@ export AWS_SECRET_ACCESS_KEY=<your access key>
 Export your AWS keys:
 
 ```shell
-docker run -it --rm -v $(pwd)/out:/out -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY domiq/erlang-server-build /bin/bash -ci "./build.sh -t=master -s"
+docker run -it --rm -v $(pwd):/out -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY domiq/erlang-server-build /bin/bash -ci "./build.sh -t=master -s"
 ```
 
